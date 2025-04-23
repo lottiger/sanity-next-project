@@ -1,4 +1,4 @@
-import { CalendarHeart } from 'lucide-react';
+import { CalendarHeart, NotebookPen } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 
@@ -14,10 +14,19 @@ const landing = () => {
 			>
 				Curious? Click here to learn more about us!
 			</Link>
-			<div className="hover:scale-110 transition-transform duration-300">
-				<Link href="/events">
-					<CalendarHeart size={100} />
-				</Link>
+			<div className=" flex gap-20 mt-10 text-center ">
+				<div className="hover:scale-110 transition-transform duration-300">
+					<Link href="/events">
+						<CalendarHeart size={100} />
+						<p className="">Events</p>
+					</Link>
+				</div>
+				<div className="hover:scale-110 transition-transform duration-300">
+					<Link href="/article">
+						<NotebookPen size={100} />
+						<p>Articles</p>
+					</Link>
+				</div>
 			</div>
 		</div>
 	);

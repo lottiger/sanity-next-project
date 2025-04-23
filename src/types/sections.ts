@@ -20,10 +20,26 @@ export type ImageSection = {
 	_type: 'imageSection';
 	image: SanityImageSource;
 	caption?: string;
+	layout?: 'default' | 'two-column' | 'small' | 'large';
+};
+
+export type ImageRowSection = {
+	_type: 'imageRowSection';
+	layout: 'two-column' | 'three-column';
+	images: SanityImageSource[];
+};
+
+export type ImageWithTextSection = {
+	_type: 'imageWithTextSection';
+	image: SanityImageSource;
+	text: PortableTextBlock[];
+	layout?: 'image-left' | 'image-right';
 };
 
 export type Section =
 	| TitleSection
 	| SubheadingSection
 	| BodyTextSection
-	| ImageSection;
+	| ImageSection
+	| ImageRowSection
+	| ImageWithTextSection;

@@ -47,7 +47,7 @@ export default async function AboutPage() {
 					default:
 						return (
 							<p key={index} className="text-red-600">
-								Unknown section type: {(section as any)._type}
+								{/* Unknown section type: {(section as any)._type} */}
 							</p>
 						);
 				}
