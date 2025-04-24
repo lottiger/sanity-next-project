@@ -13,12 +13,16 @@ type Props = {
 };
 
 const query = `*[_type == "article" && slug.current == $slug][0]{
-  _id,
-  title,
-  slug,
-  publishedAt,
-  sections
-}`;
+    _id,
+    title,
+    slug,
+    publishedAt,
+    author {
+      name,
+      image
+    },
+    sections
+  }`;
 
 export default async function ArticlePage({ params }: Props) {
 	const article = await client.fetch(query, { slug: params.slug });
@@ -30,9 +34,37 @@ export default async function ArticlePage({ params }: Props) {
 	return (
 		<main className="max-w-3xl mx-auto p-6">
 			<h1 className="text-3xl font-bold mb-4">{article.title}</h1>
-			<p className="text-sm text-gray-600 mb-8">
-				{new Date(article.publishedAt).toLocaleDateString()}
-			</p>
+			<div className="text-sm bg-white/5 mb-8 flex gap-2 flex-col p-4">
+				<div className=" flex text-lg align-center gap-2 items-center">
+					{article.author?.name && (
+						<>
+							{article.author.image && (
+								<Image
+									src={urlFor(article.author.image)
+										.width(60)
+										.height(60)
+										.url()}
+									alt={article.author.name}
+									width={60}
+									height={60}
+									className="rounded-full"
+								/>
+							)}
+							<div>
+								<p>{article.author.name}</p>
+
+								<p>Somelier & kock</p>
+								<p className="text-sm text-gray-400">
+									publicerat{' '}
+									{new Date(
+										article.publishedAt,
+									).toLocaleDateString()}
+								</p>
+							</div>
+						</>
+					)}
+				</div>
+			</div>
 
 			{article.sections?.map((section: Section, index: number) => {
 				switch (section._type) {

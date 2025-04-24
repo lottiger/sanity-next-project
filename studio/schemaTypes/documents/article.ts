@@ -20,6 +20,25 @@ export const article = defineType({
       },
     },
     {
+      name: 'publishedAt',
+      title: 'Published at',
+      type: 'datetime',
+    },
+    {
+      name: 'author',
+      title: 'Author',
+      type: 'object',
+      fields: [
+        {name: 'name', type: 'string', title: 'Name'},
+        {
+          name: 'image',
+          type: 'image',
+          title: 'Profile image',
+          options: {hotspot: true},
+        },
+      ],
+    },
+    {
       name: 'sections',
       title: 'Sections',
       type: 'array',
@@ -31,11 +50,6 @@ export const article = defineType({
         {type: 'imageRowSection'},
         {type: 'imageWithTextSection'},
       ],
-    },
-    {
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
     },
   ],
 })
