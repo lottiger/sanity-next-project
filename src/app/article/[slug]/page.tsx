@@ -41,19 +41,19 @@ export default async function ArticlePage({ params }: Props) {
 							{article.author.image && (
 								<Image
 									src={urlFor(article.author.image)
-										.width(60)
-										.height(60)
+										.width(65)
+										.height(65)
 										.url()}
 									alt={article.author.name}
-									width={60}
-									height={60}
+									width={65}
+									height={65}
 									className="rounded-full"
 								/>
 							)}
 							<div>
 								<p>{article.author.name}</p>
 
-								<p>Somelier & kock</p>
+								<p>Connoisseur</p>
 								<p className="text-sm text-gray-400">
 									publicerat{' '}
 									{new Date(

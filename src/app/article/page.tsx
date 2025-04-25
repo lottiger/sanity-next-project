@@ -34,7 +34,7 @@ export default async function ArticleListPage() {
 				{articles.map((article) => (
 					<li
 						key={article._id}
-						className="flex justify-between items-center hover:bg-white/10 p-4 transition-colors duration-300"
+						className="flex justify-between items-center hover:bg-white/5 p-4 transition-colors duration-300"
 					>
 						<Link
 							href={`/article/${article.slug.current}`}
